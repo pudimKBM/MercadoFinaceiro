@@ -28,15 +28,22 @@ with open('Data_parser/forex_prices_EURUSD_m1.csv', mode='r') as csv_file:
     pattern1 = [2,2,2]
     pattern2 = [2,1,1]
     def sequence_in(seq, target):
-        for i in range(len(target) - len(seq) + 1):
+        i= 0
+        while i in range(len(target) - len(seq) + 1):
             print(i)
             if seq == target[i:i+len(seq)]:
                 catalogados.append("azul")
                 print(seq)
-                i = i+2
-                print( i )
+                i+=2
+                continue
+            i+=1
         return seq
-    print(sequence_in(pattern1 , ciclos))
+    
+    #TODO check triplicaçao e nao triplicaçao
+    def get_triplicacao():
+         
+        pass
+    print(sequence_in(pattern2 , ciclos))
     print(catalogados)
     if (pattern1 in ciclos) : 
         print(f"ciclo existe{pattern1}")
