@@ -27,16 +27,22 @@ with open('Data_parser/forex_prices_EURUSD_m1.csv', mode='r') as csv_file:
     print(ciclos)
     pattern1 = [2,2,2]
     pattern2 = [2,1,1]
-    def sequence_in(seq, target):
+    def catalogador(seq):
         catalogacao = []
         i= 0
-        while i in range(len(target) - len(seq) + 1):
+        while i in range(len(seq)):
             print(i)
-            if seq == target[i:i+len(seq)]:
-                catalogacao.append("azul")
-                print(seq)
-                i+=2
-                continue
+            if seq[i] == seq[i+1]:
+                if seq[i] == seq[i+2] : 
+                    catalogacao.append("azul")
+                    print([seq[i], seq[i+1], seq[i+2]])
+                    i+=2
+                    pass
+                elif seq[i] != seq[i+2] : 
+                    catalogacao.append("rosa")
+                    print([seq[i], seq[i+1], seq[i+2]])
+                    i+=2 
+                    pass
             i+=1
         return catalogacao
     
@@ -44,7 +50,8 @@ with open('Data_parser/forex_prices_EURUSD_m1.csv', mode='r') as csv_file:
     def get_triplicacao():
          
         pass
-    print(sequence_in(pattern2 , ciclos))
+    catalog_lv1 = ["azul", "azul", "rosa", "rosa","rosa", "rosa"]
+    print(catalogador(catalog_lv1))
     if (pattern1 in ciclos) : 
         print(f"ciclo existe{pattern1}")
     print(f'Processed {line_count} lines.')
